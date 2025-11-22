@@ -40,7 +40,8 @@ public class UpdateManager : MonoBehaviour
         }
     }
 
-    private static readonly List<Sub<IUpdatable>> Subscriptions = new();
+    private static readonly List<Sub<IUpdatable>> UpdateSubscriptions = new();
+    private static readonly List<Sub<IFixedUpdatable>> FixedUpdateSubscriptions = new();
 
     private void Awake()
     {
@@ -50,31 +51,49 @@ public class UpdateManager : MonoBehaviour
     private void Update()
     {
         var deltaTime = Time.deltaTime;
-        foreach (var sub in Subscriptions) sub.Target.OnUpdate(deltaTime);
+        foreach (var sub in UpdateSubscriptions) sub.Target.OnUpdate(deltaTime);
+    }
+
+    private void FixedUpdate()
+    {
+        var deltaTime = Time.fixedDeltaTime;
+        foreach (var sub in FixedUpdateSubscriptions) sub.Target.OnFixedUpdate(deltaTime);
     }
 
     public static void Register(IUpdatable update)
     {
-        Subscriptions.Add(new Sub<IUpdatable>(update));
-        Sort();
+        UpdateSubscriptions.Add(new Sub<IUpdatable>(update));
+        Sort(UpdateSubscriptions);
     }
     
     public static void Register(IUpdatable update, int priority)
     {
-        Subscriptions.Add(new Sub<IUpdatable>(update, priority));
-        Sort();
+        UpdateSubscriptions.Add(new Sub<IUpdatable>(update, priority));
+        Sort(UpdateSubscriptions);
+    }
+
+    public static void Register(IFixedUpdatable update)
+    {
+        FixedUpdateSubscriptions.Add(new Sub<IFixedUpdatable>(update));
+        Sort(FixedUpdateSubscriptions);
     }
 
     public static void Unregister(IUpdatable update)
     {
-        Subscriptions.Remove(new Sub<IUpdatable>(update));
+        UpdateSubscriptions.Remove(new Sub<IUpdatable>(update));
+    }
+    
+    public static void Unregister(IFixedUpdatable update)
+    {
+        FixedUpdateSubscriptions.Remove(new Sub<IFixedUpdatable>(update));
     }
 
-    private static void Sort()
+    private static void Sort<T>(List<Sub<T>> list)
     {
         // Lower priority first
-        Subscriptions.Sort((a, b) => a.Priority.CompareTo(b.Priority));
+        list.Sort((a, b) => a.Priority.CompareTo(b.Priority));
     }
 }
 
 public interface IUpdatable { void OnUpdate(float deltaTime); }
+public interface IFixedUpdatable { void OnFixedUpdate(float deltaTime); }
