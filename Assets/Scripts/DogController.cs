@@ -46,7 +46,7 @@ public class DogController : MonoBehaviour, IUpdatable
         var move = moveAction.ReadValue<Vector2>();
         
         _verticalSpeed += verticalAcceleration * move.y * deltaTime;
-        _verticalSpeed = Mathf.Min(_verticalSpeed, 0);
+        _verticalSpeed = Mathf.Max(_verticalSpeed, 0);
         
         transform.position += _verticalSpeed * deltaTime * Vector3.up;
     }

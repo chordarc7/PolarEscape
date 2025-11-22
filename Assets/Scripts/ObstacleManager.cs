@@ -53,8 +53,11 @@ public class ObstacleManager : MonoBehaviour
 
     private Vector2 GetRandomPos()
     {
-        var randomX = Random.Range(_minX, _maxX);
-        var randomY = Random.Range(_minY, _maxY);
-        return new Vector2(randomX, randomY);
+        while (true)
+        {
+            var randomPos = new Vector2(Random.Range(_minX, _maxX), Random.Range(_minY, _maxY));
+            if (Vector2.Distance(randomPos, Vector2.zero) < 10f) continue;
+            return randomPos;
+        }
     }
 }

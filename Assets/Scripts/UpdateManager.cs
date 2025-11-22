@@ -1,12 +1,9 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class UpdateManager : MonoBehaviour
 {
-    public static UpdateManager Instance { get; private set; }
-
     private struct Sub<T> : IEquatable<Sub<T>>
     {
         public T Target;
@@ -42,11 +39,6 @@ public class UpdateManager : MonoBehaviour
 
     private static readonly List<Sub<IUpdatable>> UpdateSubscriptions = new();
     private static readonly List<Sub<IFixedUpdatable>> FixedUpdateSubscriptions = new();
-
-    private void Awake()
-    {
-        Instance = this;
-    }
 
     private void Update()
     {
