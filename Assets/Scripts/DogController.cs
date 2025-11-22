@@ -33,7 +33,11 @@ public class DogController : MonoBehaviour, IUpdatable
     
     private void HandleHorizontalInput(float deltaTime)
     {
+#if UNITY_EDITOR || UNITY_STANDALONE_WIN
         var move = moveAction.ReadValue<Vector2>();
+#elif UNITY_ANDROID
+        var move = TiltInputManager.Tilt(deltaTime);
+#endif
 
         _horizontalSpeed += horizontalAcceleration * move.x * deltaTime;
         _horizontalSpeed = Mathf.Clamp(_horizontalSpeed, -horizontalMaxSpeed, horizontalMaxSpeed);
@@ -43,7 +47,11 @@ public class DogController : MonoBehaviour, IUpdatable
     
     private void HandleVerticalInput(float deltaTime)
     {
+#if UNITY_EDITOR || UNITY_STANDALONE_WIN
         var move = moveAction.ReadValue<Vector2>();
+#elif UNITY_ANDROID
+        var move = TiltInputManager.Tilt(deltaTime);
+#endif
         
         _verticalSpeed += verticalAcceleration * move.y * deltaTime;
         _verticalSpeed = Mathf.Max(_verticalSpeed, 0);

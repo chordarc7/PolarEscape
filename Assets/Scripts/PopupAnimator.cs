@@ -1,6 +1,7 @@
-using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem.EnhancedTouch;
+using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
 public class PopupAnimator : MonoBehaviour
 {
@@ -16,15 +17,26 @@ public class PopupAnimator : MonoBehaviour
     
     private void OnEnable()
     {
+        TouchSimulation.Enable();
+        EnhancedTouchSupport.Enable();
+
+        Touch.onFingerDown += Reset;
+        
         StartCoroutine(Animate());
+    }
+
+    private void OnDisable()
+    {
+        Touch.onFingerDown -= Reset;
+        
+        TouchSimulation.Disable();
+        EnhancedTouchSupport.Disable();
     }
 
     private IEnumerator Animate()
     {
         _animating = true;
 
-        StartCoroutine(ListenForReset());
-        
         transform.localScale = Vector3.zero;
         
         yield return new WaitForSeconds(delay);
@@ -43,16 +55,7 @@ public class PopupAnimator : MonoBehaviour
         _animating = false;
     }
 
-    private IEnumerator ListenForReset()
-    {
-        while (_animating)
-        {
-            if (Input.anyKeyDown) Reset();
-            yield return null;
-        }
-    }
-
-    public void Reset()
+    private void Reset(Finger finger)
     {
         if (!_animating) return;
         transform.localScale = Vector3.one;

@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class TitleManager : MonoBehaviour
 {
     [SerializeField] private GameObject buttons;
+    [SerializeField] private GameObject options;
     
     public void OnStartPress()
     {
@@ -13,7 +14,7 @@ public class TitleManager : MonoBehaviour
 
     public void OnOptionPress()
     {
-        // open option window
+        options.SetActive(true);
     }
     
     public void OnQuitPress()
