@@ -256,6 +256,28 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &36975426 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6860032047169533240, guid: 754c9f952b760554fb33565563717d7e, type: 3}
+  m_PrefabInstance: {fileID: 8488513032729135262}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
+--- !u!114 &353438937 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2176334888880934671, guid: 754c9f952b760554fb33565563717d7e, type: 3}
+  m_PrefabInstance: {fileID: 8488513032729135262}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
 --- !u!224 &468985457 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6357480440715943829, guid: 6842ae52831b2204f8dd13de6e2bfa53, type: 3}
@@ -654,6 +676,61 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 9146724451333909323, guid: abfe33661be895743a8f0c2f82bc530d, type: 3}
   m_PrefabInstance: {fileID: 7677017446271558424}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1674419308 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1612067016872657435, guid: 754c9f952b760554fb33565563717d7e, type: 3}
+  m_PrefabInstance: {fileID: 8488513032729135262}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
+--- !u!1 &1736324546
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1736324548}
+  - component: {fileID: 1736324547}
+  m_Layer: 0
+  m_Name: TiltManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1736324547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1736324546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6146c43b52216914cb8b5d7a5545868e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TiltInputManager
+--- !u!4 &1736324548
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1736324546}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &1993371105 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8499446038295780028, guid: 60dcde58bd6ced64d9e444ad4f0ad4d9, type: 3}
@@ -1444,6 +1521,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -25
       objectReference: {fileID: 0}
+    - target: {fileID: 8370143298695324929, guid: 754c9f952b760554fb33565563717d7e, type: 3}
+      propertyPath: xOffsetSlider
+      value: 
+      objectReference: {fileID: 1674419308}
+    - target: {fileID: 8370143298695324929, guid: 754c9f952b760554fb33565563717d7e, type: 3}
+      propertyPath: deadZoneSlider
+      value: 
+      objectReference: {fileID: 36975426}
+    - target: {fileID: 8370143298695324929, guid: 754c9f952b760554fb33565563717d7e, type: 3}
+      propertyPath: smoothingSlider
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8370143298695324929, guid: 754c9f952b760554fb33565563717d7e, type: 3}
+      propertyPath: sensitivitySlider
+      value: 
+      objectReference: {fileID: 353438937}
     - target: {fileID: 8433291200925997725, guid: 754c9f952b760554fb33565563717d7e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -1501,7 +1594,9 @@ PrefabInstance:
       value: -85
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5412314381287229005, guid: 754c9f952b760554fb33565563717d7e, type: 3}
+    - {fileID: 2774593142551792597, guid: 754c9f952b760554fb33565563717d7e, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 754c9f952b760554fb33565563717d7e, type: 3}
@@ -1513,3 +1608,4 @@ SceneRoots:
   - {fileID: 604841702}
   - {fileID: 814966360}
   - {fileID: 1994957353}
+  - {fileID: 1736324548}
